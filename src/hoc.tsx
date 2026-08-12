@@ -1,13 +1,14 @@
-import type { ComponentType } from "react"
+import { useContext } from "react";
+import {loginContext} from "./context/login"
 
-function withBorder(WrappedComponent: ComponentType) {
-    return function WithBorder(props : {}) {
-        return (
-            <div style={{ border: "2px solid blue", padding: "10px" }}>
-                <WrappedComponent {...props} />
-            </div>
-        )
-    }
+
+export default function Form() {
+  const user = useContext(loginContext)
+  
+  return (
+
+      <h1>{`Hello ${user}`}</h1>
+    
+  )
+  
 }
-
-export default withBorder

@@ -66,7 +66,6 @@ function Counter() {
   }
 
   useEffect(() => {
-    console.log("App started")
     setInterval(() => {
       setIsLoading(false)
     }, 2000)
