@@ -1,32 +1,11 @@
-import Timer from "./title.tsx"
-import Counter from "./todo.tsx"
-import Form from "./hoc.tsx"
-import { loginContext, ThemeContext } from "./context/login.tsx"
-import { useState } from "react"
-import  Toolbar  from "./toolbar.tsx"
-import Comparison from "./comparison.tsx"
-import Practice from "./practice.tsx"
+import Route from "./routes/route"
 
 export function App() {
-  const [user] = useState('Alex');
-  const [theme] = useState('dark');
-  return(
+  return (
     <>
-      
-      <Counter />
-      <loginContext.Provider value={user}>
-        <Form />
-        <Timer />
-      </loginContext.Provider>
-      <ThemeContext.Provider value={theme}>
-      <Toolbar />
-      </ThemeContext.Provider>
-      <Comparison />
-      <Practice/>
+    <Route />
     </>
-  )
-   
-  
+  );
 }
 
-export default App
+export default App;

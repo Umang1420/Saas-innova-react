@@ -139,7 +139,7 @@ function Counter() {
                   </button>
                   <button onClick={() => handleDelete(item.id)}>Delete</button>
                 </>
-              )}
+              )}  
             </li>
           )
         })}
