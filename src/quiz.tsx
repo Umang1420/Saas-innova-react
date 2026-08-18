@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useEffect } from "react";
 
 
 export default function Quiz(){
@@ -43,9 +43,15 @@ export default function Quiz(){
         setMath(total);
     };
 
+    useEffect(()=>{
+        // console.log("Component Mounted");    
+        document.title = `${count}`
+
+        // return ()=>{console.log("Component unmounted")}
+    },[count])
     return (
         <><br/>
-        <h5>You can only go 5 numbers back With Undo</h5><br/>
+        <h5>You can only go 5 last changes back With Undo</h5><br/>
         <h1>{count}</h1>
         <button onClick={handleIncrease}>Correct Ans</button>
         <button onClick={handleDecrease}>Wrong Ans</button>
