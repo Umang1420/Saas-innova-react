@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Quiz(){
     const [count, setCount] = useState<number>(0);
     const [log,setLog] = useState<number[]>([]);
-
+    const [math, setMath] = useState<number>(0);
     const handleIncrease = ()=>{
         setCount((pre)=>(pre + 10))
         console.log(log.length)
@@ -31,7 +31,18 @@ export default function Quiz(){
         setCount(lastValue);
         setLog((prev) => prev.slice(0, -1));
     }
-    
+   
+    const expensiveOperation = () => {
+        let total = 0;
+
+        for (let i = 0; i < 10000; i++) {
+            total += i;
+            console.log(total)
+        }
+
+        setMath(total);
+    };
+
     return (
         <><br/>
         <h5>You can only go 5 numbers back With Undo</h5><br/>
@@ -44,6 +55,7 @@ export default function Quiz(){
             ))}
         </ul>
         <button onClick={handleUndo}>Undo</button>
+        <br/><button onClick={expensiveOperation}>Show</button><p>{math}</p>
         </>
     ) 
 
