@@ -15,6 +15,8 @@ import Api from "../api.tsx";
 import "../app.css";
 import { ImportantForm } from "../ImportantForm.tsx";
 import Cart from "../cart.tsx"
+import Quiz from "../quiz.tsx"
+
 const user = "Alex";
 const theme = "dark";
 
@@ -32,6 +34,7 @@ function AppLayout() {
         <Link className="links" to="/practice">Practice</Link>
         <Link className="links" to="/important">ImpForm</Link>
         <Link className="links" to="/cart">Cart</Link>
+        <Link className="links" to="/quiz">Quiz</Link>
       </nav>
       <Outlet />
     </>
@@ -73,7 +76,8 @@ const router = createBrowserRouter([
       { path: "/api", element: <Api /> },
       { path: "/Api", element: <Api /> },
       { path: "/important", element: <ImportantForm /> },
-      { path: "/cart", element: <Cart /> }
+      { path: "/cart", element: <Cart /> },
+      { path: "/quiz", element: <Quiz /> }
     ],
   },
 ]);

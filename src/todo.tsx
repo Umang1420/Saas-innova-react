@@ -20,8 +20,8 @@ function Counter() {
   })
 
   const [input, setInput] = useState<string>("")
-  const [isOn, setIsOn] = useState<boolean>(true)
 
+  const [isOn, setIsOn] = useState<boolean>(true)
   const handleOn=()=>{
     if(isOn){
       setIsOn(false)
@@ -162,7 +162,7 @@ function Counter() {
           )
         })}
       </ul>
-      <p>{isOn?"ON":"OFF"}</p>
+      <p>{isOn?"ON":"OFF"}</p><br/>
       <button onClick={handleOn}>Toggle ON/OFF</button>
     </>
   )
