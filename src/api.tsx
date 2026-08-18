@@ -54,11 +54,11 @@ const Api = () => {
                     <div className="item" key={item.id}>
                         <ol>
                             <div>
-                                <strong>User_Name: </strong>
+                                <strong>User Name: </strong>
                                 {item.username},
                             </div>
-                            <div>Full_Name: {item.name}</div>
-                            <div>User_Email: {item.email}</div>
+                            <div>Full Name: {item.name}</div>
+                            <div>User Email: {item.email}</div>
                         </ol>
                     </div>
                 ))}

@@ -7,8 +7,8 @@ interface Todo {
 }
 
 function Counter() {
-  const [count, setCount] = useState(50)
-  const [isLoading, setIsLoading] = useState(true)
+  const [count, setCount] = useState<number>(0)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [inputText, setInputText] = useState<string>("")
 
   const [editingId, setEditingId] = useState<number | null>(null)
@@ -19,9 +19,25 @@ function Counter() {
     return saved ? JSON.parse(saved) : []
   })
 
+  const [input, setInput] = useState<string>("")
+  const [isOn, setIsOn] = useState<boolean>(true)
+
+  const handleOn=()=>{
+    if(isOn){
+      setIsOn(false)
+    }else{
+      setIsOn(true)
+    }
+  }
+ 
+
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos])
+
+  const handleAddCount= ()=>{
+    setCount((pre)=>(pre+1))
+  }
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault()
@@ -72,19 +88,20 @@ function Counter() {
   }, [])
 
   function handleCount() {
-    if (count < 3) {
+    if (count === 0) {
       alert("No more values to decrease")
     } else {
-      setCount((pre) => pre - 3)
+      setCount((pre) => pre - 1)
     }
   }
 
   return (
     <>
       <h1>{count}</h1>
-      <button onClick={handleCount}>Decrease By 3</button>
+      <button onClick={handleAddCount}>Increase</button><button onClick={handleCount}>Decrease</button><button onClick={()=>setCount(0)}>Reset</button><br></br><br></br>
+      <input type="text" value={input} onChange={(e)=>setInput(e.target.value)}></input><p>{input}</p><br></br><br></br>
       <h1>{isLoading ? "Loading..." : "Loaded!"}</h1>
-
+      <br></br><br></br>
       <form onSubmit={handleAdd} style={{ marginBottom: "20px" }}>
         <input
           type="text"
@@ -93,6 +110,7 @@ function Counter() {
           placeholder="What needs to be done?"
           style={{ padding: "8px", marginRight: "8px" }}
         />
+        
         <button type="submit">Add</button>
       </form>
 
@@ -144,6 +162,8 @@ function Counter() {
           )
         })}
       </ul>
+      <p>{isOn?"ON":"OFF"}</p>
+      <button onClick={handleOn}>Toggle ON/OFF</button>
     </>
   )
 }
