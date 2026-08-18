@@ -1,10 +1,13 @@
 import { useState } from "react"
 
+
+
 const Cart = () => {
   const [item, setItem] = useState<string>("")
   const [itemList, setItemList] = useState<string[]>([])
+  
 
-  const handleItem = () => {
+    const handleItem = () => {
     const trimmedItem = item.trim()
     if (!trimmedItem) return
 
@@ -14,6 +17,7 @@ const Cart = () => {
 
   return (
     <div>
+
       <input
         type="text"
         value={item}
@@ -25,6 +29,7 @@ const Cart = () => {
           <li key={`${listItem}-${index}`}>{listItem}</li>
         ))}
       </ul>
+      <br />
     </div>
   )
 }
