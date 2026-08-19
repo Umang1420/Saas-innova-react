@@ -44,10 +44,10 @@ export default function Quiz(){
     };
 
     useEffect(()=>{
-        // console.log("Component Mounted");    
-        document.title = `${count}`
+        console.log("Component Mounted");    
+       
 
-        // return ()=>{console.log("Component unmounted")}
+        return ()=>{console.log("Component unmounted")}
     },[count])
     return (
         <><br/>
