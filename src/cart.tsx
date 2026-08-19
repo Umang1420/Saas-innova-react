@@ -7,7 +7,6 @@ interface Quote {
 }
 
 const Cart = () => {
-  
   const [item, setItem] = useState<string>("")
   const [itemList, setItemList] = useState<string[]>([])
 
@@ -18,11 +17,9 @@ const Cart = () => {
     setItem("")
   }
 
-  
   const [userInput, setUserInput] = useState<string>("")
   const [filteredQuotes, setFilteredQuotes] = useState<Quote[]>([])
   const [loading, setLoading] = useState<boolean>(false)
-
 
   useEffect(() => {
     if (!userInput.trim()) {
@@ -33,17 +30,15 @@ const Cart = () => {
     setLoading(true)
 
     const getData = setTimeout(() => {
-    
       fetch("https://dummyjson.com/quotes")
         .then((res) => res.json())
         .then((data) => {
           const allQuotes: Quote[] = data.quotes || []
-          
-          
+
           const matches = allQuotes.filter((q) =>
             q.author.toLowerCase().includes(userInput.toLowerCase())
           )
-          
+
           setFilteredQuotes(matches)
           setLoading(false)
         })
@@ -59,7 +54,6 @@ const Cart = () => {
 
   return (
     <div>
-     
       <input
         type="text"
         value={item}
@@ -75,10 +69,10 @@ const Cart = () => {
 
       <br />
       <hr />
-      <br/>
-    
+      <br />
+
       <p>Search Quotes by author (ex.. Rumi, Buddha, Einstein):</p>
-      <br/>
+      <br />
       <input
         type="text"
         value={userInput}
@@ -86,20 +80,19 @@ const Cart = () => {
         placeholder="Type author name..."
       />
 
-     
+      <br />
+      <br />
       {loading && <p>Searching...</p>}
 
-
       <ul>
-        {!loading && filteredQuotes.length > 0 ? (
-          filteredQuotes.map((item) => (
-            <li key={item.id}>
-              <strong>{item.author}:</strong> "{item.quote}"
-            </li>
-          ))
-        ) : (
-          userInput.trim() && !loading && <li>No quotes found for this author.</li>
-        )}
+        {!loading && filteredQuotes.length > 0
+          ? filteredQuotes.map((item) => (
+              <li key={item.id}>
+                <strong>{item.author}:</strong> "{item.quote}"
+              </li>
+            ))
+          : userInput.trim() &&
+            !loading && <li>No quotes found for this author.</li>}
       </ul>
     </div>
   )
