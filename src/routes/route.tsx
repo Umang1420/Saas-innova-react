@@ -17,6 +17,7 @@ import { ImportantForm } from "../ImportantForm.tsx";
 import Cart from "../cart.tsx"
 import Quiz from "../quiz.tsx"
 import Window from "../window.tsx"
+import Focus from "../focus.tsx";
 
 const user = "Alex";
 const theme = "dark";
@@ -37,6 +38,7 @@ function AppLayout() {
         <Link className="links" to="/cart">Cart</Link>
         <Link className="links" to="/quiz">Quiz</Link>
         <Link className="links" to="/window">Window</Link>
+        <Link className="links" to="/focus">Focus</Link>
       </nav>
       <Outlet />
     </>
@@ -80,7 +82,8 @@ const router = createBrowserRouter([
       { path: "/important", element: <ImportantForm /> },
       { path: "/cart", element: <Cart /> },
       { path: "/quiz", element: <Quiz /> },
-      { path: "/window", element: <Window /> }
+      { path: "/window", element: <Window /> },
+      { path: "/focus", element: <Focus /> }
     ],
   },
 ]);
