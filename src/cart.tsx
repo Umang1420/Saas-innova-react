@@ -75,9 +75,10 @@ const Cart = () => {
 
       <br />
       <hr />
-      
+      <br/>
     
       <p>Search Quotes by author (ex.. Rumi, Buddha, Einstein):</p>
+      <br/>
       <input
         type="text"
         value={userInput}
