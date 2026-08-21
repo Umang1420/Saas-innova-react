@@ -3,12 +3,12 @@ import express from 'express';
 const app = express();
 const port = 5000;
 
-const myLogger = function (req, res, next) {
-  console.log('LOGGED');
-  next();
-};
+// const myLogger = function (req, res, next) {
+//   console.log('LOGGED');
+//   next();
+// };
 
-app.use(myLogger)
+// app.use(myLogger)
 app.use(express.json());
 
 
@@ -30,9 +30,11 @@ app.get('/user/:name', function(req, res) {
 app.post('/', (req  , res) => {
   res.send('Got a POST request');
 }); 
+
 app.put('/', (req  , res) => {
   res.send('Got a PUT request');
 });
+
 app.get('/user', (req, res) => {
     res.json({ message: "Please provide a username, like /user/John" });
 });
@@ -44,4 +46,4 @@ app.delete('/user', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Done, Server is running on http://localhost:${port}`);
-}); 
+});     
